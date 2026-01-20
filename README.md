@@ -1,9 +1,11 @@
 # ECL298
 This repository is to document my works from ECL298 class, winter quarter 2026 with Dr. Robert Hijmans. 
 
-#HW 1: R script that shows logistic regression and k-fold cross-validation using the dataset (College) that has information related to a large number of US Colleges from the 1995 issue of US News and World Report. The dataset is from ISLR package. 
+HW#1: R script that shows a form of regression and k-fold cross-validation 
 
-Format. 
+-- For this HW I am using the dataset : College from ISLR package that has information related to a large number of US Colleges from the 1995 issue of US News and World Report. I am builiding a logistic regreesion model to predict whether a ceratin school is private or not using the following data from College Dataset: Apps, Top10perc, F.Undergrad, Outstate, Room.Board, Books, Personal, PhD, Terminal, S.F.Ratio, Expend student, and Grad.Rate. 
+
+College Data Format:
 A data frame with 777 observations on the following 18 variables. 
 - Private: A factor with levels No and Yes indicating private or public university
 - Apps: Number of applications received 
