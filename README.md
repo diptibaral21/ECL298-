@@ -67,6 +67,7 @@ Y_c(t) = F_c + \gamma_c t
 \alpha \, TI_c^i(t) + \beta \, TI_c^i(t)^2
 \right]
 + \varepsilon_c(t)
+```
 
 where subscripts $c$, $i$, and $t$ indicate county, temperature indices, and year, respectively.  
 $Y_c(t)$ is the rice yield for county $c$ in year $t$.  
