@@ -61,12 +61,14 @@ Temperature and Stress Indices are calculated for the three rice growth stages a
 I will use lasso regression model for this analysis because lasso regression can mitigate the problem of multicollinearity in the variables. I will train a total of 100 models over the period of 1979 to 2023 by selecting a subset of 70% of observational data and evaluating on the remaining 30%. The lasso regression model is as shown below: 
 
 $$
-Y_c(t) = F_c + \gamma_c t + \sum_{i=1}^{N}
+Y_c(t) = F_c + \gamma_c t
++ \sum_{i=1}^{N}
 \left[
 \alpha \, TI_c^i(t) + \beta \, TI_c^i(t)^2
 \right]
 + \varepsilon_c(t)
 $$
+
 
 where subscripts $c$, $i$, and $t$ indicate county, temperature indices, and year, respectively.  
 $Y_c(t)$ is the rice yield for county $c$ in year $t$.  
