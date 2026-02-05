@@ -2,6 +2,7 @@
 install.packages("ISLR")
 library(ISLR)
 library(dplyr)
+library(caret)
 
 #choosing college dataset - and exploring the dataset
 head(College)
@@ -41,7 +42,7 @@ accuracy = numeric(k)
 for (i in 1:k){
   #split data
   train_data <- df[folds != i,]
-  test_data <- df[folds == k,]
+  test_data <- df[folds == i,]
   #scale using the training data
   x_train <- train_data[, -1]
   x_test <- test_data[, -1]
@@ -62,7 +63,7 @@ for (i in 1:k){
     x_test_scaled
   )
   #fit regression
-  model <- glm(Private ~ ., data = test_scaled, family = binomial)
+  model <- glm(Private ~ ., data = train_scaled, family = binomial)
 
   #predict probabilities
   prob <- predict(model, test_scaled, type = "response")
@@ -72,10 +73,18 @@ for (i in 1:k){
   pred <- factor(pred, levels = c("Yes", "No"))
 
   #Accuracy
-  accuracy[k] <- mean(pred == test_scaled$Private)
+  accuracy[i] <- mean(pred == test_scaled$Private)
 }
 
 #cross-validated performance
 
 mean(accuracy)
 sd(accuracy)
+
+#standardized coefficients
+
+summary(logit_model)$coefficients
+varImp(logit_model, scale = TRUE)
+
+#Logistic regression performs very well in classifying colleges a private or not. The model accuracy from k-fold cross validation is 0.936 with standard deviation of 0.045.
+#Most influential predictors are tuition (Outstate), faculty qualitifications (PhD), No. of full-time undergrad (F. Undergrad), Total Applications (Apps), Percentage of alumni who donate (perc.alumni), Expenditure (Expend). 
