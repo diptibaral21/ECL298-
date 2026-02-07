@@ -98,3 +98,23 @@ Wu, S., Zikalala, P. G., Alba, S., Jarvis-Shean, K. S., Kisekka, I., Segaran, M.
     
 Zhang, Z., Wang, P., Chen, Y., Song, X., Wei, X., & Shi, P. (2014). Global warming over 1960–2009 did increase heat stress and reduce cold stress in the major rice-planting areas across China. European Journal of Agronomy, 59, 49–56. https://doi.org/10.1016/j.eja.2014.05.008
 
+
+# Supplementary Files
+
+## Contents of this file 
+
+### I.	Introduction 
+### II.	Figures S1 to S2 
+### III.	R script
+
+### I.	Introduction 
+The supporting information provides additional detail on Cook’s Distance for outlier removal (Figure S1) and the standardized lasso coefficients (Figure S2). R script used to run the model is at the end of the document. 
+
+ 
+#### Figure S1
+
+![alt text](image.png)
+ 
+#### Figure S2
+
+![](output_data/standardized_lasso_coefs.png)
