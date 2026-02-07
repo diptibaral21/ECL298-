@@ -3,7 +3,7 @@
 
 ## 1. Introduction
 
-California has hot and dry summers with high amounts of solar radiation and relatively low pest pressure, contributing to the second-highest average yields in the world after Australia(Linquist et al., 2025). However, climate change is expected to negatively affect rice production in California due to increased temperatures and the occurrence of extreme weather events like droughts, heat stress, cold stress., etc.
+California has hot and dry summers with high amounts of solar radiation and relatively low pest pressure, contributing to the second-highest average yields in the world after Australia(Linquist et al., 2025). However, climate change is expected to negatively affect rice production in California due to increased temperatures and the occurrence of extreme weather events like droughts, heat stress, cold stress, etc.
 
 Past research suggests that seasonal mean temperatures are the dominant drivers of yield losses in rice. Peng et al. (2004) suggested around 10% yield decline per C increase in night temperature. However, Espe et al. (2017) found that rather than seasonal warming, temperatures during the critical stages of rice explain most yield variability. In their study, they estimated only a 1-2% yield loss per C seasonal mean temperature, but the temperatures
 stresses during critical reproductive stages had five times greater impact than seasonal warming. Similar results have been found in other subtropical rice systems Zhang et al. (2014). Espe et al. (2017) showed that the largest temperature-driven effect on yield was found to be cool stress during the booting stage, followed by cold stress during flowering, heat stress during flowering, seasonal mean Tmmx, seasonal mean Tmmn, grain-fill stage mean Tmmx and grain-fill stage mean Tmmn.
@@ -17,7 +17,7 @@ analyses. While the field experiments by Espe et al. (2017) have established the
 
 ### 2.1 County Level Yield Data in California
 
-The rice yields are from the United States Department of Agriculture (USDA) National Agricultural Statistics Service (NASS) which provides county-level crop statistics from 1980 to present. In California, rice is grown in 9 countries in Sacramento Valley: 
+The rice yields are from the United States Department of Agriculture (USDA) National Agricultural Statistics Service (NASS) which provides county-level crop statistics from 1980 to present. In California, rice is grown in 9 countries in Sacramento Valley: Glenn, Butte, Colusa, Yuba, Sutter, Placer, Yolo, Sacramento and San Joaquin
 
 ### 2.2 Climate Data
 
@@ -70,11 +70,13 @@ $\varepsilon_c(t)$ is the error term.
 
 An evaluation of the statistical models over the historical period driven by the gridMET observed climate (Figure 1, panel a) shows high coefficients of determination (R2) for both the training set (median R2 = 0.79) and the testing set (median R2 = 0.69) and the ability to reproduce the trends and the year-to-year fluctuations in rice yields, thus demonstrating the robust performance of the statistical modeling approach. The code used to run the analysis in R can be found in the supplementary files. 
 
- #### 1.a     
-![alt text](image.png)                                                              
+ #### 1.a   
+ ![alt text](image-1.png)
+                                              
   
-#### 1.b      
-![alt text](image-1.png)
+#### 1.b 
+
+![alt text](image.png) 
 
 *Figure 1: Evaluation of statistical models. Coefficients of determination (R2) btained from training datasets (70%) and testing dataset (30%) for the 1,000 statistical models are shown in 1.a.  1.b displays the California average yield time series simulated by the 1,000 statistical models driven by GridMet climate data over the historical period (1980-2020).*
 
