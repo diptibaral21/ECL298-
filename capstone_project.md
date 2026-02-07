@@ -1,8 +1,7 @@
 Impact of Temperature Stress on Rice Yield in Sacramento Valley, California
-Dipti Baral¬1
-1Department of Plant Science, University of California, Davis; dbaral@ucdavis.edu
 
-    Introduction
+
+1. Introduction
 
 California has hot and dry summers with high amounts of solar radiation and relatively low pest pressure, contributing to the second-highest average yields in the world after Australia(Linquist et al., 2025). However, climate change is expected to negatively affect rice production in California due to increased temperatures and the occurrence of extreme weather events like droughts, heat stress, cold stress., etc.
 
@@ -11,73 +10,81 @@ stresses during critical reproductive stages had five times greater impact than 
 
 However, these findings have not yet been tested at a broader scale, such as county level
 analyses. While the field experiments by Espe et al. (2017) have established the relationship between temperature variables on rice yield, how these processes pan out in real-world farming systems, with variable management practices and spatially heterogeneous climate conditions needs to be understood. This research will address the knowledge gap with below mentioned research objective
-    Evaluate how the seven stress parameters unique to different rice growing stages explain yield variability in California’s Sacramento Valley using historical climate and yield data
+    - Evaluate how the seven stress parameters unique to different rice growing stages explain yield variability in California’s Sacramento Valley using historical climate and yield data
 
 
-    Data and Methods
+2. Data and Methods
 
-    County Level Yield Data in California
+    2.1 County Level Yield Data in California
 
-The rice yields are from the United States Department of Agriculture (USDA) National Agricultural Statistics Service (NASS) which provides county-level crop statistics from 1980 to present. In California, rice is grown in 9 countries in Sacramento Valley: 
+    The rice yields are from the United States Department of Agriculture (USDA) National Agricultural Statistics Service (NASS) which provides county-level crop statistics from 1980 to present. In California, rice is grown in 9 countries in Sacramento Valley: 
 
-    Climate Data
+    2.2 Climate Data
 
-The climate data are obtained from high-resolution gridded dataset called gridMET which provides climate variables at a spatial resolution of 4km covering the contiguous United States from 1979 to present. 
+    The climate data are obtained from high-resolution gridded dataset called gridMET which provides climate variables at a spatial resolution of 4km covering the contiguous United States from 1979 to present. 
 
-    Rice Cropland Layer
+    2.3 Rice Cropland Layer
 
-We use the Cropland Data Layer (CDL) which is a 30m resolution raster dataset with geographical locations of croplands in contiguous US. We use this dataset to identify the rice growing grid cells and calculate county-level average climate indices.  
+    We use the Cropland Data Layer (CDL) which is a 30m resolution raster dataset with geographical locations of croplands in contiguous US. We use this dataset to identify the rice growing grid cells and calculate county-level average climate indices.  
 
-    Rice Phenology 
+    2.4 Rice Phenology 
 
-Rice growth stages are identified using Growing Degree Days Model, which has been tested to be accurate for California Rice System. Using GDD model, rice growth stages such as Booting, Flowering and Grainfill are determined. 
+    Rice growth stages are identified using Growing Degree Days Model, which has been tested to be accurate for California Rice System. Using GDD model, rice growth stages such as Booting, Flowering and Grainfill are determined. 
 
-2.4 Temperature Indices (TI)
+    2.5 Temperature Indices (TI)
 
-Temperature and Stress Indices are calculated for the three rice growth stages and for entire growth season. The following are the temperature variables and their naming convention
-Stages
-
-Variables	Booting	Flowering	Grainfill	Growth Period
-Minimum Temperature	tmmn_bo	tmmn_fl	tmmn_gf	tmmn
-Maximum Temperature	tmmx_bo	tmmx_fl	tmmx_gf	tmmx
-Mean Temperature	tmean_bo	tmean_fl	tmean_gf	tmean
-Cold Stress	cdstress_bo			
-Heat Stress	htstress_bo	ht_stress_fl		
+    Temperature and Stress Indices are calculated for the three rice growth stages and for entire growth season. The following are the temperature variables and their naming convention
+    |Stages/Variables | Booting | Flowering | Grainfill | Growth Period |
+    | Minimum Temperature | tmmn_bo | tmmn_fl | tmmx_gf | tmmn |
+    | Maximum Temperature | tmmx_bo | tmmx_fl | tmmx_gf | tmmx|
+    | Mean Temperature | tmean_bo | tmean_fl | tmean_gf | tmean |
+    | Cold Stress | cdstress_bo |  |  |  |
+    |Heat Stress | htstress_bo | htstress_fl | | | 
+    
 
 
 
 
     Statistical Modeling
 
-We used a lasso regression model for our analysis because lasso regression can mitigate the problem of multicollinearity in our variables (Wu et al., 2025).We removed the outliers and extreme values using cook’s distance. We trained a total of 100 models over the period of 1979 to 2023 by selecting a subset of 70% of observational data and evaluating on the remaining 30%. The lasso regression model is as shown below: 
-Y_c{\left(t\right)}=F_c+\gamma_ct+\sum_{i}^{N}\left[\alphaTI_c^i{\left(t\right)}+\betaTI_c^i{\left(t\right)^2}\right]+\varepsilon_c{\left(t\right)}
-subscripts c, i, and t  indicate county, Temperature Indices, and year, respectively;   
-Y_c{\left(t\right)}\ is the rice yield for county  and year ;  
-F_c\  refers to the county-level fixed effects representing average yield differences between counties;  
-\gamma_ct\ represents county-level temporal trends that cannot be explained by climate variations;
-\alpha\ and  \beta\  are the linear and quadratic coefficients; is the error term.
+    We used a lasso regression model for our analysis because lasso regression can mitigate the problem of multicollinearity in our variables (Wu et al., 2025).We removed the outliers and extreme values using cook’s distance. We trained a total of 100 models over the period of 1979 to 2023 by selecting a subset of 70% of observational data and evaluating on the remaining 30%. The lasso regression model is as shown below: 
+    ```math
+    Y_c(t) = F_c + \gamma_c t
+    + \sum_{i=1}^{N}
+    \left[
+    \alpha \, TI_c^i(t) + \beta \, TI_c^i(t)^2
+    \right]
+    + \varepsilon_c(t)
+    ```
+
+    where subscripts $c$, $i$, and $t$ indicate county, temperature indices, and year, respectively.  
+    $Y_c(t)$ is the rice yield for county $c$ in year $t$.  
+    $F_c$ refers to county-level fixed effects representing average yield differences between counties.  
+    $\gamma_c t$ represents county-level temporal trends not explained by climate variations.  
+    $\alpha$ and $\beta$ are the linear and quadratic coefficients, respectively.  
+    $\varepsilon_c(t)$ is the error term.
 
 3. Results and Discussion
 
-3.1 Model Results
+    3.1 Model Results
 
-An evaluation of the statistical models over the historical period driven by the gridMET observed climate (Figure 1, panel a) shows high coefficients of determination (R2) for both the training set (median R2 = 0.79) and the testing set (median R2 = 0.69) and the ability to reproduce the trends and the year-to-year fluctuations in rice yields, thus demonstrating the robust performance of the statistical modeling approach. The code used to run the analysis in R can be found in the supplementary files. 
+    An evaluation of the statistical models over the historical period driven by the gridMET observed climate (Figure 1, panel a) shows high coefficients of determination (R2) for both the training set (median R2 = 0.79) and the testing set (median R2 = 0.69) and the ability to reproduce the trends and the year-to-year fluctuations in rice yields, thus demonstrating the robust performance of the statistical modeling approach. The code used to run the analysis in R can be found in the supplementary files. 
 
-1.a                                                                   
+    1.a                                                                   
   
-1.b
+    1.b
  
 
-3.2 Temperature variables contribution to yield change
+    3.2 Temperature variables contribution to yield change
 
-Lasso model performed regularization and variable selection. Based on the lasso model coefficients, the most influential predictors of rice yield include both temperature and stress-based variables, particularly during the flowering and booting stages. Positive coefficients such as tmmx, tmmx_fl tmmx_gf suggest that moderate warm conditions during the growth stages are associated with increased yields. Large negative coefficients such as htstress_fl, cdstress_bo indicate substantial yield penalties under heat stress during flowering and cold stress during booting. These results are in line with the findings from Espe et al. (2017). Only linear relationship was considered by Espe et al. (2017) but in our model the presence of squared terms among the strongest predictors highlights non-linear climate sensitivity, where yield declines rapidly beyond stress thresholds. These results emphasize flowering and booting as critical windows of climate vulnerability for rice production. 
+    Lasso model performed regularization and variable selection. Based on the lasso model coefficients, the most influential predictors of rice yield include both temperature and stress-based variables, particularly during the flowering and booting stages. Positive coefficients such as tmmx, tmmx_fl tmmx_gf suggest that moderate warm conditions during the growth stages are associated with increased yields. Large negative coefficients such as htstress_fl, cdstress_bo indicate substantial yield penalties under heat stress during flowering and cold stress during booting. These results are in line with the findings from Espe et al. (2017). Only linear relationship was considered by Espe et al. (2017) but in our model the presence of squared terms among the strongest predictors highlights non-linear climate sensitivity, where yield declines rapidly beyond stress thresholds. These results emphasize flowering and booting as critical windows of climate vulnerability for rice production. 
 
 
-References
+    References
 
-Espe, M. B., Hill, J. E., Hijmans, R. J., McKenzie, K., Mutters, R., Espino, L. A., Leinfelder‐Miles, M., Van Kessel, C., & Linquist, B. A. (2017). Point stresses during reproductive stage rather than warming seasonal temperature determine yield in temperate rice. Global Change Biology, 23(10), 4386–4395. https://doi.org/10.1111/gcb.13719
-Linquist, B., Al-Khatib, K., Brim-DeForest, W., Espe, M. B., Espino, L., Leinfelder-Miles, M., & Stogsdill, J. R. (2025). Predictors of high rice yields in a high-yielding environment: Lessons from a yield contest. Field Crops Research, 322, 109693. https://doi.org/10.1016/j.fcr.2024.109693
-Peng, S., Huang, J., Sheehy, J. E., Laza, R. C., Visperas, R. M., Zhong, X., Centeno, G. S., Khush, G. S., & Cassman, K. G. (2004). Rice yields decline with higher night temperature from global warming. Proceedings of the National Academy of Sciences, 101(27), 9971–9975. https://doi.org/10.1073/pnas.0403720101
-Wu, S., Zikalala, P. G., Alba, S., Jarvis-Shean, K. S., Kisekka, I., Segaran, M., Snyder, R., & Monier, E. (2025). Advancing the Modeling of Future Climate and Innovation Impacts on Perennial Crops to Support Adaptation: A Case Study of California Almonds. Earth’s Future, 13(4), e2024EF005033. https://doi.org/10.1029/2024EF005033
-Zhang, Z., Wang, P., Chen, Y., Song, X., Wei, X., & Shi, P. (2014). Global warming over 1960–2009 did increase heat stress and reduce cold stress in the major rice-planting areas across China. European Journal of Agronomy, 59, 49–56. https://doi.org/10.1016/j.eja.2014.05.008
+    Espe, M. B., Hill, J. E., Hijmans, R. J., McKenzie, K., Mutters, R., Espino, L. A., Leinfelder‐Miles, M., Van Kessel, C., & Linquist, B. A. (2017). Point stresses during reproductive stage rather than warming seasonal temperature determine yield in temperate rice. Global Change Biology, 23(10), 4386–4395. https://doi.org/10.1111/gcb.13719
+    Linquist, B., Al-Khatib, K., Brim-DeForest, W., Espe, M. B., Espino, L., Leinfelder-Miles, M., & Stogsdill, J. R. (2025). Predictors of high rice yields in a high-yielding environment: Lessons from a yield contest. Field Crops Research, 322, 109693. https://doi.org/10.1016/j.fcr.2024.109693
+    Peng, S., Huang, J., Sheehy, J. E., Laza, R. C., Visperas, R. M., Zhong, X., Centeno, G. S., Khush, G. S., & Cassman, K. G. (2004). Rice yields decline with higher night temperature from global warming. Proceedings of the National Academy of Sciences, 101(27), 9971–9975. https://doi.org/10.1073/pnas.0403720101
+    Wu, S., Zikalala, P. G., Alba, S., Jarvis-Shean, K. S., Kisekka, I., Segaran, M., Snyder, R., & Monier, E. (2025). Advancing the Modeling of Future Climate and Innovation Impacts on Perennial Crops to Support Adaptation: A Case Study of California Almonds. Earth’s Future, 13(4), e2024EF005033. https://doi.org/10.1029/2024EF005033
+    Zhang, Z., Wang, P., Chen, Y., Song, X., Wei, X., & Shi, P. (2014). Global warming over 1960–2009 did increase heat stress and reduce cold stress in the major rice-planting areas across China. European Journal of Agronomy, 59, 49–56. https://doi.org/10.1016/j.eja.2014.05.008
 
