@@ -70,13 +70,13 @@ $\varepsilon_c(t)$ is the error term.
 
 An evaluation of the statistical models over the historical period driven by the gridMET observed climate (Figure 1, panel a) shows high coefficients of determination (R2) for both the training set (median R2 = 0.79) and the testing set (median R2 = 0.69) and the ability to reproduce the trends and the year-to-year fluctuations in rice yields, thus demonstrating the robust performance of the statistical modeling approach. The code used to run the analysis in R can be found in the supplementary files. 
 
- #### 1.a   
- ![alt text](image-1.png)
+#### 1.a   
                                               
-  
-#### 1.b 
+![alt text](<Testing vs Training Set R2.png>)
 
-![alt text](image.png) 
+#### 1.b 
+![alt text](<Observed vs Predicted Yield.png>)
+
 
 *Figure 1: Evaluation of statistical models. Coefficients of determination (R2) btained from training datasets (70%) and testing dataset (30%) for the 1,000 statistical models are shown in 1.a.  1.b displays the California average yield time series simulated by the 1,000 statistical models driven by GridMet climate data over the historical period (1980-2020).*
 
