@@ -116,7 +116,7 @@ The supporting information provides additional detail on Cook’s Distance for o
  
 #### Figure S1
 
-![alt text](image.png)
+![alt text](output_data/cooks_distance_plot.png)
  
 #### Figure S2
 
