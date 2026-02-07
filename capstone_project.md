@@ -71,11 +71,11 @@ $\varepsilon_c(t)$ is the error term.
 An evaluation of the statistical models over the historical period driven by the gridMET observed climate (Figure 1, panel a) shows high coefficients of determination (R2) for both the training set (median R2 = 0.79) and the testing set (median R2 = 0.69) and the ability to reproduce the trends and the year-to-year fluctuations in rice yields, thus demonstrating the robust performance of the statistical modeling approach. The code used to run the analysis in R can be found in the supplementary files. 
 
 #### 1.a   
-                                              
-![alt text](<Testing vs Training Set R2.png>)
+![alt text](image.png)                                         
+
 
 #### 1.b 
-![alt text](<Observed vs Predicted Yield.png>)
+![alt text](image-1.png)
 
 
 *Figure 1: Evaluation of statistical models. Coefficients of determination (R2) btained from training datasets (70%) and testing dataset (30%) for the 1,000 statistical models are shown in 1.a.  1.b displays the California average yield time series simulated by the 1,000 statistical models driven by GridMet climate data over the historical period (1980-2020).*
@@ -85,6 +85,9 @@ An evaluation of the statistical models over the historical period driven by the
 
 Lasso model performed regularization and variable selection. Based on the lasso model coefficients, the most influential predictors of rice yield include both temperature and stress-based variables, particularly during the flowering and booting stages. Positive coefficients such as tmmx, tmmx_fl tmmx_gf suggest that moderate warm conditions during the growth stages are associated with increased yields. Large negative coefficients such as htstress_fl, cdstress_bo indicate substantial yield penalties under heat stress during flowering and cold stress during booting. These results are in line with the findings from Espe et al. (2017). Only linear relationship was considered by Espe et al. (2017) but in our model the presence of squared terms among the strongest predictors highlights non-linear climate sensitivity, where yield declines rapidly beyond stress thresholds. These results emphasize flowering and booting as critical windows of climate vulnerability for rice production. 
 
+![alt text](image-2.png)
+
+*Figure 2: Temperature variables contributions to yield change*
 
 ## References
 
